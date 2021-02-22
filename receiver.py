@@ -18,7 +18,6 @@ class Listener(tweepy.StreamListener):
                 'Data': status_json_text
             }
         )
-        print(response)
         return True
 
     def on_error(self, status_code):
