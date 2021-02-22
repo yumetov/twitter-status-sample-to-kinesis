@@ -11,6 +11,8 @@ class Listener(tweepy.StreamListener):
 
     def on_status(self, status):
         status_dict = status._json
+        if status_dict['lang'] != 'ja':
+            return True
         status_json_text = json.dumps(status_dict) + '\n'
         response = self.client.put_record(
             DeliveryStreamName='twitter-statuses-sample-stream',
